@@ -1,7 +1,7 @@
 __all__ = ['SERIALIZER']
 
 
-SERIALIZER = """from rest_framework.serializers import ModelSerializer
+SERIALIZER = """from rest_framework import serializers 
 from {{ app }}.models import {{ models | join:', ' }}
 {% for model in models %}
 class {{ model }}Serializer(ModelSerializer):

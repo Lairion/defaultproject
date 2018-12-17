@@ -1,5 +1,5 @@
 from rest_framework import viewsets,mixins
-from test_model.serializers import CategorySerializer, SkillSerializer
+from test_model.api.serializers import CategorySerializer, SkillSerializer
 from test_model.models import Category, Skill
 
 class CategoryViewSet(mixins.ListModelMixin,

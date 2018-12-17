@@ -15,7 +15,7 @@ urlpatterns = format_suffix_patterns(urlpatterns)
 """
 FUNCTION_URL_V2 = """from django.urls import path
 from rest_framework.urlpatterns import format_suffix_patterns
-from {{ app }} import views
+from {{ app }}.api import views
 urlpatterns = [
 {% for model in models %}
   path('{{ model|lower }}/<int:pk>', views.{{ model }}APIView.as_view()),
@@ -28,7 +28,7 @@ urlpatterns = format_suffix_patterns(urlpatterns)
 FUNCTION_VIEW = """from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from {{ app }}.models import {{ models | join:', ' }}
-from {{ app }}.serializers import {{ serializers | join:', ' }}
+from {{ app }}.api.serializers import {{ serializers | join:', ' }}
 {% for model in models %}
 @api_view(['GET', 'POST'])
 def {{ model | lower }}_list(request):
