@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'rest_framework_swagger',
     'rest_auth',
+    'corsheaders',
     ## for storages
     #'dropbox',
     #'storages',
