@@ -24,6 +24,7 @@ class {{ model }}ViewSet(mixins.ListModelMixin,
 					mixins.CreateModelMixin,
 					mixins.UpdateModelMixin,
                     mixins.RetrieveModelMixin,
+                    mixins.DestroyModelMixin,
                     viewsets.GenericViewSet):
     queryset = {{ model }}.objects.all()
     serializer_class = {{ model }}Serializer
