@@ -22,10 +22,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'y9dk2fvwo@8dh9%p5er#q&82qbhes_n_azg^m^0=v6p5e+3#vk'
 
+
+CORS_ORIGIN_ALLOW_ALL = True
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -44,6 +46,10 @@ INSTALLED_APPS = [
     'django_filters',
     'test_model',
     'django_admin_generator',
+    'rest_framework.authtoken',
+    'rest_framework_swagger',
+    'rest_auth',
+    'corsheaders',
     ## for storages
     #'dropbox',
     #'storages',
@@ -58,6 +64,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'maincore.urls'

@@ -8,7 +8,7 @@ except ImportError:
   pass
 import django
 from django.contrib import admin
-from {{ app }} import views
+from {{ app }}.api import views
 if django.VERSION[1] < 10:
   urlpatterns = patterns('',
   {% for model in models %}
@@ -25,7 +25,7 @@ else:
   ]
 """
 API_URL_V2 = """from django.urls import path
-from {{ app }} import views
+from {{ app }}.api import views
 urlpatterns = [
 {% for model in models %}
   path('{{ model|lower }}/<int:id>', views.{{ model }}APIView.as_view()),
@@ -37,7 +37,7 @@ urlpatterns = [
 API_VIEW = """from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from {{ app }}.serializers import {{ serializers|join:', ' }}
+from {{ app }}.api.serializers import {{ serializers|join:', ' }}
 from {{ app }}.models import {{ models|join:', ' }}
 {% for model in models %}
 class {{ model }}APIView(APIView):

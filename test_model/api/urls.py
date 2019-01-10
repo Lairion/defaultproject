@@ -1,5 +1,5 @@
 from rest_framework.routers import SimpleRouter
-from test_model import views
+from test_model.api import views
 router = SimpleRouter()
 
 router.register('category', views.CategoryViewSet)

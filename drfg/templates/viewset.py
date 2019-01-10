@@ -2,14 +2,14 @@ __all__ = ['VIEW_SET_URL', 'VIEW_SET_VIEW']
 
 
 VIEW_SET_URL = """from rest_framework.routers import SimpleRouter
-from {{ app }} import views
+from {{ app }}.api import views
 router = SimpleRouter()
 {% for model in models %}
 router.register(r'{{ model | lower }}', views.{{ model }}ViewSet, '{{model}}'){% endfor %}
 urlpatterns = router.urls
 """
 VIEW_SET_URL_V2 = """from rest_framework.routers import SimpleRouter
-from {{ app }} import views
+from {{ app }}.api import views
 router = SimpleRouter()
 {% for model in models %}
 router.register('{{ model | lower }}', views.{{ model }}ViewSet, '{{model}}'){% endfor %}
@@ -20,7 +20,7 @@ urlpatterns = router.urls
 VIEW_SET_VIEW = """from django.shortcuts import get_object_or_404
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
-from {{ app }}.serializers import {{ serializers|join:', ' }}
+from {{ app }}.api.serializers import {{ serializers|join:', ' }}
 from {{ app }}.models import {{ models|join:', ' }}
 {% for model in models %}
 class {{ model }}ViewSet(ViewSet):
